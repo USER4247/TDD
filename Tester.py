@@ -24,12 +24,17 @@ class Tester(unittest.TestCase):
         self.assertAlmostEqual(results, 3.0, places=1)
 
     def test_negative_number_raises_exception(self):
-        with self.assertRaisesRegex(Exception, "negative numbers not allowed -5"):
-            Calculator().add("1,-5")
+        with self.assertRaisesRegex(Exception, "negative numbers not allowed -5.0, -7.0"):
+            Calculator().add("1,-5,-7")
 
     def test_add_float(self):
         results = Calculator().add("//;\n1.0;2.4")
         self.assertAlmostEqual(results, 3.4, places=1)
+
+    def test_add_invalid_characters(self):
+        with self.assertRaises(ValueError):
+            # input contains "1a" and "a4", which are invalid characters
+            Calculator().add("//;\n1.0;2.4;1a;a4")
 
 if __name__ == "__main__":
     unittest.main()
