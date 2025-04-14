@@ -5,6 +5,7 @@ class Calculator:
         if not string.strip(): # for empty/ whitespaces
             return sum
         
+        string = string.replace('\n', ',') # replace \n with , 
         ls = string.split(',')
         for i in ls:
             sum += int(i)

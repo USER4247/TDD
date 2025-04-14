@@ -14,6 +14,10 @@ class Tester(unittest.TestCase):
     def test_add_3(self):
         results = Calculator().add('1,5')
         self.assertAlmostEqual(results, 6.0, places=1)
+    
+    def test_add_4(self):
+        results = Calculator().add("1\n2,3")
+        self.assertAlmostEqual(results, 6.0, places=1)
 
 if __name__ == "__main__":
     unittest.main()
