@@ -1,5 +1,6 @@
 class Calculator:
     def add(self, string: str) -> float:
+        negative_numbers = []
         sum = 0.0
         string = string.strip()  # remove all left and right whitespaces
         if not string:  # for empty/whitespaces
@@ -17,9 +18,17 @@ class Calculator:
         for i in ls:
             i = i.strip()
             if i:
-                sum += int(i)
+                num = int(i)
+                if num < 0:
+                    negative_numbers.append(num)
+                sum += num
+
+        if negative_numbers:
+            raise ValueError(f"negative numbers not allowed {', '.join(map(str, negative_numbers))}")
+
         return sum
 
 
 if __name__ == "__main__":
-    print(Calculator().add("//;\n1;2"))
+    print(Calculator().add("//;\n1;2"))  
+    print(Calculator().add("//;\n1;-2"))  
