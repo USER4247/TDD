@@ -18,7 +18,7 @@ class Calculator:
         for i in ls:
             i = i.strip()
             if i:
-                num = int(i)
+                num = float(i)
                 if num < 0:
                     negative_numbers.append(num)
                 sum += num

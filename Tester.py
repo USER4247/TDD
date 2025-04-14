@@ -27,5 +27,9 @@ class Tester(unittest.TestCase):
         with self.assertRaisesRegex(Exception, "negative numbers not allowed -5"):
             Calculator().add("1,-5")
 
+    def test_add_float(self):
+        results = Calculator().add("//;\n1.0;2.4")
+        self.assertAlmostEqual(results, 3.4, places=1)
+
 if __name__ == "__main__":
     unittest.main()
